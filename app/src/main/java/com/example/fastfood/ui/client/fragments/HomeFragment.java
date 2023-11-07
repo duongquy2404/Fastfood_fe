@@ -1,4 +1,4 @@
-package com.example.fastfood.ui.fragments;
+package com.example.fastfood.ui.client.fragments;
 
 import android.os.Bundle;
 

@@ -105,4 +105,14 @@
             android:textSize="15dp"
             android:textColor="#088DF6"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvLoginAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="90dp"
+        android:text="Đăng nhập với tư cách quản trị viên"
+        android:textSize="15dp"
+        android:textColor="#088DF6"/>
 </LinearLayout>

@@ -47,62 +47,40 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:text="Đăng kí"
+        android:text="Đăng nhập admin"
         android:textSize="36dp"
         android:textColor="@color/orange"
         android:textStyle="bold"/>
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etUsernameAdmin"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_edittext"
-        android:hint="Họ và tên"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:hint="Tên đăng nhập"
         android:padding="8dp"
         android:layout_marginBottom="16dp"
-        android:inputType="textPassword" />
+        android:inputType="text" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etPasswordAdmin"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="@drawable/rounded_edittext"
         android:hint="Mật khẩu"
         android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/etRePassword"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_edittext"
-        android:hint="Nhập lại mật khẩu"
-        android:padding="8dp"
         android:layout_marginBottom="32dp"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnLoginAdmin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Đăng kí"
+        android:text="Đăng nhập"
         android:background="@drawable/rounded_button"
         android:textAllCaps="false"
         android:padding="12dp"

@@ -7,7 +7,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.fastfood.ui.adapters.ViewAdapter;
+import com.example.fastfood.ui.client.adapters.ViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

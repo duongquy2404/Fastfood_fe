@@ -1,13 +1,13 @@
-package com.example.fastfood.ui.adapters;
+package com.example.fastfood.ui.client.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.fastfood.ui.fragments.AccountFragment;
-import com.example.fastfood.ui.fragments.CartFragment;
-import com.example.fastfood.ui.fragments.HomeFragment;
+import com.example.fastfood.ui.client.fragments.AccountFragment;
+import com.example.fastfood.ui.client.fragments.CartFragment;
+import com.example.fastfood.ui.client.fragments.HomeFragment;
 
 public class ViewAdapter extends FragmentStateAdapter {
     public ViewAdapter(@NonNull FragmentActivity fragmentActivity) {
