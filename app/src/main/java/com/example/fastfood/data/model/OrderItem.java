@@ -3,17 +3,17 @@ package com.example.fastfood.data.model;
 public class OrderItem {
     private Long id;
     private Long orderId;
-    private Long productId;
+    private Long foodId;
     private int quantity;
     private Double price;
 
     public OrderItem() {
     }
 
-    public OrderItem(Long id, Long orderId, Long productId, int quantity, Double price) {
+    public OrderItem(Long id, Long orderId, Long foodId, int quantity, Double price) {
         this.id = id;
         this.orderId = orderId;
-        this.productId = productId;
+        this.foodId = foodId;
         this.quantity = quantity;
         this.price = price;
     }
@@ -34,12 +34,12 @@ public class OrderItem {
         this.orderId = orderId;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Long getFoodId() {
+        return foodId;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setFoodId(Long foodId) {
+        this.foodId = foodId;
     }
 
     public int getQuantity() {

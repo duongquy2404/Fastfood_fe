@@ -1,52 +1,43 @@
 package com.example.fastfood;
 
+import static com.example.fastfood.utils.TimeContants.TIME_DELAY_START_APP;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 
+import com.example.fastfood.ui.client.activities.ClientActivity;
+import com.example.fastfood.ui.client.activities.LoginActivity;
 import com.example.fastfood.ui.client.adapters.ViewAdapter;
+import com.example.fastfood.utils.SessionManager;
+import com.example.fastfood.utils.TimeContants;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private BottomNavigationView bnvHome;
-    private ViewPager2 vp_home;
-    private ViewAdapter va;
-
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
-        setViewPage();
-        addMenuItem();
-    }
 
-    public void init(){
-        bnvHome=findViewById(R.id.bnvHome);
-        vp_home=findViewById(R.id.vp_home);
-    }
-
-    public void setViewPage(){
-        va=new ViewAdapter(this);
-        vp_home.setAdapter(va);
-    }
-
-    public void addMenuItem(){
-        bnvHome.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        sessionManager = new SessionManager(getApplicationContext());
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId()==R.id.mHome){
-                    vp_home.setCurrentItem(0);
-                } else if (item.getItemId()==R.id.mCart) {
-                    vp_home.setCurrentItem(1);
-                } else if (item.getItemId()==R.id.mAccount) {
-                    vp_home.setCurrentItem(2);
+            public void run() {
+                if (sessionManager.isLoggedIn()) {
+                    Intent clientIntent = new Intent(MainActivity.this, ClientActivity.class);
+                    startActivity(clientIntent);
+                } else {
+                    Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(loginIntent);
                 }
-                return true;
+                finish();
             }
-        });
+        }, TIME_DELAY_START_APP);
     }
 }

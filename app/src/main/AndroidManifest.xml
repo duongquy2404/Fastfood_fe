@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Fastfood"
         tools:targetApi="31">
         <activity
+            android:name=".ui.client.activities.ClientActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.client.activities.UserInfoActivity"
             android:exported="false" />
         <activity

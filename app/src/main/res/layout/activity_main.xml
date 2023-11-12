@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bnvHome"/>
-    
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnvHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_home"
-        app:itemTextColor="@color/color_bnv"
-        app:itemIconTint="@color/color_bnv"/>
-</RelativeLayout>
+    android:src="@drawable/logo"/>

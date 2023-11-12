@@ -1,6 +1,6 @@
 package com.example.fastfood.data.model;
 
-public class Product {
+public class Food {
     private Long id;
     private String name;
     private Double price;
@@ -8,10 +8,10 @@ public class Product {
     private String imageUrl;
     private Long categoryId;
 
-    public Product() {
+    public Food() {
     }
 
-    public Product(Long id, String name, Double price, String description, String imageUrl, Long categoryId) {
+    public Food(Long id, String name, Double price, String description, String imageUrl, Long categoryId) {
         this.id = id;
         this.name = name;
         this.price = price;

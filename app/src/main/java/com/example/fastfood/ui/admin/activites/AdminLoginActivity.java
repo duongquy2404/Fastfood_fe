@@ -15,14 +15,22 @@ import com.example.fastfood.ui.client.activities.LoginActivity;
 public class AdminLoginActivity extends AppCompatActivity {
     private ImageView ivBackLogin;
     private EditText etUsernameAdmin;
-    private EditText edPasswordAdmin;
+    private EditText etPasswordAdmin;
     private Button btnLoginAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
+        init();
         clickEvent();
+    }
+
+    public void init(){
+        ivBackLogin=(ImageView) findViewById(R.id.ivBackLogin);
+        etUsernameAdmin=(EditText) findViewById(R.id.etUsernameAdmin);
+        etPasswordAdmin=(EditText) findViewById(R.id.etPasswordAdmin);
+        btnLoginAdmin=(Button) findViewById(R.id.btnLoginAdmin);
     }
 
     public void clickEvent(){
