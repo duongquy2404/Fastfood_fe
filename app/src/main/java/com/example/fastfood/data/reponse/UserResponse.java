@@ -1,23 +1,25 @@
 package com.example.fastfood.data.reponse;
 
+import com.example.fastfood.data.model.User;
+
 public class UserResponse {
-    String token;
-    String message;
+    private User user;
+    private String message;
 
     public UserResponse() {
     }
 
-    public UserResponse(String token, String message) {
-        this.token = token;
+    public UserResponse(User user, String message) {
+        this.user = user;
         this.message = message;
     }
 
-    public String getToken() {
-        return token;
+    public User getUser() {
+        return user;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getMessage() {

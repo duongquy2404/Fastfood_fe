@@ -2,18 +2,18 @@ package com.example.fastfood.data.model;
 
 public class CartItem {
     private Long id;
+    private Long cartId;
     private Long foodId;
     private int quantity;
-    private String note;
 
     public CartItem() {
     }
 
-    public CartItem(Long id, Long foodId, int quantity, String note) {
+    public CartItem(Long id, Long cartId, Long foodId, int quantity) {
         this.id = id;
+        this.cartId = cartId;
         this.foodId = foodId;
         this.quantity = quantity;
-        this.note = note;
     }
 
     public Long getId() {
@@ -22,6 +22,14 @@ public class CartItem {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(Long cartId) {
+        this.cartId = cartId;
     }
 
     public Long getFoodId() {
@@ -38,13 +46,5 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
     }
 }

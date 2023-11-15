@@ -18,18 +18,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
         <Button
+            android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thêm món ăn"/>
         <Button
+            android:id="@+id/btnTke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sửa món ăn"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Xóa món ăn"/>
+            android:text="Thống kê doanh thu"/>
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvListFood"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

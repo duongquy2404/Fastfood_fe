@@ -18,12 +18,12 @@ public class SessionManager {
         editor = prefs.edit();
     }
 
-    public void setLogin(boolean isLoggedIn, String userId) {
+    public void setLogin(boolean isLoggedIn, Long userId) {
         editor.putBoolean(KEY_IS_LOGGEDIN, isLoggedIn);
 
         // Nếu người dùng đang đăng nhập, lưu cả tên người dùng
         if (isLoggedIn) {
-            editor.putString(KEY_USER_ID, userId);
+            editor.putLong(KEY_USER_ID, userId);
         } else {
             // Nếu người dùng đăng xuất, xóa thông tin tên người dùng
             editor.remove(KEY_USER_ID);
@@ -36,7 +36,7 @@ public class SessionManager {
         return prefs.getBoolean(KEY_IS_LOGGEDIN, false);
     }
 
-    public String getUserId() {
-        return prefs.getString(KEY_USER_ID, null);
+    public long getUserId() {
+        return prefs.getLong(KEY_USER_ID, 0);
     }
 }

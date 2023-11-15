@@ -46,4 +46,11 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:text="Nguyễn Quý Dương"/>
+
+    <Button
+        android:id="@+id/btnLogoutC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Đăng xuất"/>
 </LinearLayout>

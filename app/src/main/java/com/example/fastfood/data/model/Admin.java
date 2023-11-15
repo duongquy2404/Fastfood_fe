@@ -5,15 +5,19 @@ public class Admin {
     private String name;
     private String username;
     private String password;
+    private String phone;
+    private String email;
 
     public Admin() {
     }
 
-    public Admin(Long id, String name, String username, String password) {
+    public Admin(Long id, String name, String username, String password, String phone, String email) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
+        this.phone = phone;
+        this.email = email;
     }
 
     public Long getId() {
@@ -46,5 +50,21 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

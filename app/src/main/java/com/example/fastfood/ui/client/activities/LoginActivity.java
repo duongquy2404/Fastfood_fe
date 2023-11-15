@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.fastfood.R;
 import com.example.fastfood.data.controller.UserController;
+import com.example.fastfood.data.model.User;
 import com.example.fastfood.data.model.dto.UserLoginDTO;
 import com.example.fastfood.data.reponse.UserResponse;
 import com.example.fastfood.ui.admin.activites.AdminLoginActivity;
@@ -23,9 +24,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText etUsername;
-    private EditText etPassword;
-    private Button btnLogin;
+    private EditText etUsernameLoginC;
+    private EditText etPasswordLoginC;
+    private Button btnLoginC;
     private TextView tvRegister;
     private TextView tvLoginAdmin;
     private UserController userController;
@@ -42,14 +43,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void init(){
-        etUsername=(EditText) findViewById(R.id.etUsername);
-        etPassword=(EditText) findViewById(R.id.etPassword);
-        btnLogin=(Button) findViewById(R.id.btnLogin);
+        etUsernameLoginC=(EditText) findViewById(R.id.etUsernameLoginC);
+        etPasswordLoginC=(EditText) findViewById(R.id.etPasswordLoginC);
+        btnLoginC=(Button) findViewById(R.id.btnLoginC);
         tvRegister=(TextView) findViewById(R.id.tvRegister);
         tvLoginAdmin=(TextView) findViewById(R.id.tvLoginAdmin);
     }
 
     public void clickEvent(){
+        btnLoginC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,15 +74,17 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void login(){
-        String username = etUsername.getText().toString();
-        String password = etPassword.getText().toString();
+    public void login(){
+        String username = etUsernameLoginC.getText().toString();
+        String password = etPasswordLoginC.getText().toString();
         userController.login(username, password, new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
                     UserResponse userResponse = response.body();
-                    sessionManager.setLogin(true, userResponse.getToken());
+                    User user=new User();
+                    user=userResponse.getUser();
+                    sessionManager.setLogin(true, user.getId());
                     Intent intent = new Intent(LoginActivity.this, ClientActivity.class);
                     startActivity(intent);
                     finish();

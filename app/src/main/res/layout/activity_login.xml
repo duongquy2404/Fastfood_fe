@@ -29,7 +29,7 @@
         android:textStyle="bold"/>
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etUsernameLoginC"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
@@ -41,7 +41,7 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etPasswordLoginC"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
@@ -52,7 +52,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginC"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
