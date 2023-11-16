@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,7 +35,15 @@ import com.example.fastfood.data.controller.UserController;
 import com.example.fastfood.data.model.User;
 import com.example.fastfood.ui.client.activities.LoginActivity;
 import com.example.fastfood.utils.SessionManager;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import retrofit2.Call;
@@ -50,6 +59,8 @@ public class AccountFragment extends Fragment {
     private Button btnLogoutC;
     private UserController userController;
     private SessionManager sessionManager;
+    private Uri mUri;
+    FirebaseStorage storage=FirebaseStorage.getInstance();
 
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -63,6 +74,7 @@ public class AccountFragment extends Fragment {
                             return;
                         }
                         Uri uri=data.getData();
+                        mUri=uri;
                         try {
                             Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
                             imgCustomer.setImageBitmap(bitmap);
@@ -101,6 +113,9 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 onClickRequestPermission();
+                if(mUri!=null){
+                    saveAvatar();
+                }
             }
         });
         btnLogoutC.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +145,7 @@ public class AccountFragment extends Fragment {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     User user=response.body();
-                    tvName.setText(user.getName());
+                    //tvName.setText(user.getName());
                 }
                 else {
 
@@ -172,5 +187,39 @@ public class AccountFragment extends Fragment {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         mActivityResultLauncher.launch(intent.createChooser(intent,"Select Picture"));
+    }
+
+    public void saveAvatar(){
+        StorageReference storageRef = storage.getReference().child("food").child("food_" + System.currentTimeMillis() + ".png");
+        // Get the data from an ImageView as bytes
+        imgCustomer.setDrawingCacheEnabled(true);
+        imgCustomer.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) imgCustomer.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = storageRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                // ...
+                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+
+                uriTask.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String imageUrl = uri.toString();
+                        tvName.setText(imageUrl+"hehe");
+                    }
+                });
+            }
+        });
     }
 }
