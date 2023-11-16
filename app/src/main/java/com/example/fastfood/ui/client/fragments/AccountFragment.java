@@ -34,6 +34,7 @@ import com.example.fastfood.R;
 import com.example.fastfood.data.controller.UserController;
 import com.example.fastfood.data.model.User;
 import com.example.fastfood.ui.client.activities.LoginActivity;
+import com.example.fastfood.ui.client.activities.UserInfoActivity;
 import com.example.fastfood.utils.SessionManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -95,6 +96,12 @@ public class AccountFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        infoUser();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
@@ -109,6 +116,13 @@ public class AccountFragment extends Fragment {
     }
 
     public void clickEvent(){
+        tvChinhsua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), UserInfoActivity.class);
+                startActivity(intent);
+            }
+        });
         imgCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,10 +159,7 @@ public class AccountFragment extends Fragment {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     User user=response.body();
-                    //tvName.setText(user.getName());
-                }
-                else {
-
+                    tvName.setText(user.getName());
                 }
             }
 
@@ -216,7 +227,6 @@ public class AccountFragment extends Fragment {
                     @Override
                     public void onSuccess(Uri uri) {
                         String imageUrl = uri.toString();
-                        tvName.setText(imageUrl+"hehe");
                     }
                 });
             }

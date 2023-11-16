@@ -40,10 +40,9 @@
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:hint="User Name"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:hint="Họ và tên"
+                android:textColor="@color/black"
+                android:textColorHint="#AAA3A3" />
         </LinearLayout>
         <LinearLayout
             android:layout_gravity="center"
@@ -61,10 +60,9 @@
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:hint="Your Phone Number"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:hint="Số điện thoại"
+                android:textColor="@color/black"
+                android:textColorHint="#AAA3A3" />
         </LinearLayout>
 
         <LinearLayout
@@ -83,10 +81,9 @@
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:hint="Your Address"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:hint="Địa chỉ"
+                android:textColor="@color/black"
+                android:textColorHint="#AAA3A3" />
         </LinearLayout>
 
         <Button
