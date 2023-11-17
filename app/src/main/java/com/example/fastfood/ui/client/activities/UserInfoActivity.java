@@ -1,23 +1,18 @@
 package com.example.fastfood.ui.client.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fastfood.R;
 import com.example.fastfood.data.controller.UserController;
 import com.example.fastfood.data.model.User;
-import com.example.fastfood.ui.client.fragments.AccountFragment;
 import com.example.fastfood.utils.SessionManager;
 
 import retrofit2.Call;
@@ -105,13 +100,13 @@ public class UserInfoActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
                     if(response.isSuccessful()){
-                        Toast.makeText(getApplicationContext(),"Cập nhật thành công!!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(UserInfoActivity.this,"Cập nhật thành công!!!", Toast.LENGTH_LONG).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
-
+                    Toast.makeText(UserInfoActivity.this,"Cập nhật thành công!!!", Toast.LENGTH_LONG).show();
                 }
             });
         }

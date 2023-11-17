@@ -24,4 +24,7 @@ public interface UserService {
 
     @PUT("users/update/{userId}")
     Call<User> updateUser(@Path("userId") Long userId, @Body User user);
+
+    @PUT("users/update/avatar/{userId}")
+    Call<User> updateAvatar(@Path("userId") Long userId, @Body User user);
 }

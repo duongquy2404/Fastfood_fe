@@ -42,4 +42,11 @@ public class UserController {
         Call<User> call = userService.updateUser(id,user);
         call.enqueue(callback);
     }
+
+    public void updateAvatar(Long id, String avatar, Callback<User> callback){
+        User user=new User();
+        user.setAvatar(avatar);
+        Call<User> call = userService.updateAvatar(id, user);
+        call.enqueue(callback);
+    }
 }
