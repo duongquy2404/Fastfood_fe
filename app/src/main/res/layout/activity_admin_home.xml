@@ -10,10 +10,33 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"/>
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nguyen Quy Duong"/>
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvNameAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nguyen Quy Duong"/>
+            <TextView
+                android:id="@+id/tvPhoneAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0915500625"/>
+            <TextView
+                android:id="@+id/tvEmailAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="duongquy@gmail.com"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/ivLogoutAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_logout_24"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,16 +46,20 @@
             android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="Thêm món ăn"/>
         <Button
             android:id="@+id/btnTke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:text="Thống kê doanh thu"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvListFood"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="350dp"
+        android:layout_height="600dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp" />
 </LinearLayout>

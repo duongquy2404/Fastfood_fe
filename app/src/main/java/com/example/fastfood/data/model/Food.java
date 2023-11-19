@@ -1,23 +1,25 @@
 package com.example.fastfood.data.model;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable {
     private Long id;
     private String name;
     private Double price;
     private String description;
     private String imageUrl;
-    private Long categoryId;
+    private Category category;
 
     public Food() {
     }
 
-    public Food(Long id, String name, Double price, String description, String imageUrl, Long categoryId) {
+    public Food(Long id, String name, Double price, String description, String imageUrl, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.imageUrl = imageUrl;
-        this.categoryId = categoryId;
+        this.category = category;
     }
 
     public Long getId() {
@@ -60,11 +62,11 @@ public class Food {
         this.imageUrl = imageUrl;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
