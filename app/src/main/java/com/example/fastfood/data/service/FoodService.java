@@ -7,6 +7,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -21,4 +22,7 @@ public interface FoodService {
 
     @PUT("food/update/{id}")
     Call<Food> updateFood(@Path("id") Long id, @Body Food food);
+
+    @DELETE("food/delete/{id}")
+    Call<Food> deleteFood(@Path("id") Long id);
 }

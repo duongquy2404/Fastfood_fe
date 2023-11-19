@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,10 +27,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.fastfood.R;
 import com.example.fastfood.data.controller.FoodController;
+import com.example.fastfood.data.model.Category;
 import com.example.fastfood.data.model.Food;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,6 +43,10 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AdminFoodUpdateActivity extends AppCompatActivity {
     public static final String TAG = AdminFoodUpdateActivity.class.getName();
@@ -193,11 +200,68 @@ public class AdminFoodUpdateActivity extends AppCompatActivity {
     }
 
     public void updateFood(){
+        if(mUri==null){
+            Toast.makeText(getApplicationContext(),"Vui lòng chọn ảnh!", Toast.LENGTH_SHORT).show();
+        } else if(TextUtils.isEmpty(etNameFoodUpdate.getText().toString())){
+            Toast.makeText(getApplicationContext(),"Vui lòng nhập tên cho món ăn!", Toast.LENGTH_SHORT).show();
+        } else if(TextUtils.isEmpty(etPriceUpdate.getText().toString())){
+            Toast.makeText(getApplicationContext(),"Vui lòng nhập giá tiền!", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(etDescriptionUpdate.getText().toString())) {
+            Toast.makeText(getApplicationContext(),"Vui lòng nhập thông tin món ăn!", Toast.LENGTH_SHORT).show();
+        } else {
+            String img=imgUrl;
+            String name=etNameFoodUpdate.getText().toString();
+            Double price= Double.valueOf(etPriceUpdate.getText().toString());
+            String description=etDescriptionUpdate.getText().toString();
+            Long categoryId;
+            if(category.equals("Pizza")){
+                categoryId=1L;
+            } else if (category.equals("Hamburger")) {
+                categoryId=2L;
+            }else {
+                categoryId=3L;
+            }
 
+            Food food1=new Food();
+            food1.setId(food.getId());
+            food1.setName(name);
+            food1.setPrice(price);
+            food1.setDescription(description);
+            food1.setImageUrl(img);
+            Category category1=new Category();
+            category1.setId(categoryId);
+            category1.setName(category);
+            food1.setCategory(category1);
+            foodController.updateFood(food1.getId(), food1, new Callback<Food>() {
+                @Override
+                public void onResponse(Call<Food> call, Response<Food> response) {
+                    if(response.isSuccessful()){
+                        Toast.makeText(AdminFoodUpdateActivity.this,"Lưu thành công!!!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Food> call, Throwable t) {
+                    Toast.makeText(AdminFoodUpdateActivity.this,"Lưu thất bại!!!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     public void deleteFood(){
+        foodController.deleteFood(food.getId(), new Callback<Food>() {
+            @Override
+            public void onResponse(Call<Food> call, Response<Food> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(AdminFoodUpdateActivity.this,"Xóa thành công!!!", Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<Food> call, Throwable t) {
+                Toast.makeText(AdminFoodUpdateActivity.this,"Xóa thành công!!!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void onClickRequestPermission(){

@@ -31,4 +31,21 @@ public class FoodController {
         Call<Food> call= foodService.addFood(aFood);
         call.enqueue(callback);
     }
+
+    public void updateFood(Long id, Food food, Callback<Food> callback){
+        Food uFood=new Food();
+        uFood.setId(food.getId());
+        uFood.setName(food.getName());
+        uFood.setPrice(food.getPrice());
+        uFood.setDescription(food.getDescription());
+        uFood.setCategory(food.getCategory());
+        uFood.setImageUrl(food.getImageUrl());
+        Call<Food> call=foodService.updateFood(id, uFood);
+        call.enqueue(callback);
+    }
+
+    public void deleteFood(Long id, Callback<Food> callback){
+        Call<Food> call=foodService.deleteFood(id);
+        call.enqueue(callback);
+    }
 }
