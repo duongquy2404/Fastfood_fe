@@ -74,11 +74,11 @@ public class HomeFragment extends Fragment {
         });
 
         // Add Chips to ChipGroup
-        for (String category : getCategories()) {
-            Chip chip = new Chip(getContext());
-            chip.setText(category);
-            chipGroup.addView(chip);
-        }
+//        for (String category : getCategories()) {
+//            Chip chip = new Chip(getContext());
+//            chip.setText(category);
+//            chipGroup.addView(chip);
+//        }
 
         // Set up ChipGroup listener
         chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {

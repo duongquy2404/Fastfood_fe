@@ -18,12 +18,12 @@
                 android:id="@+id/tvNameAdmin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nguyen Quy Duong"/>
+                android:text="Admin Duong"/>
             <TextView
                 android:id="@+id/tvPhoneAdmin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0915500625"/>
+                android:text="0987654321"/>
             <TextView
                 android:id="@+id/tvEmailAdmin"
                 android:layout_width="wrap_content"

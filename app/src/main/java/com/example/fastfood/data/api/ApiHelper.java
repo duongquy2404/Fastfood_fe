@@ -9,7 +9,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiHelper {
-    private static final String BASE_URL = "http://192.168.0.104:8088"; // Thay thế bằng URL của máy chủ API thực tế
+    private static final String BASE_URL = "http://192.168.0.106:8088"; // Thay thế bằng URL của máy chủ API thực tế
 
     private static Retrofit retrofit = null;
 

@@ -28,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="70.000đ"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:textColor="#F44336"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

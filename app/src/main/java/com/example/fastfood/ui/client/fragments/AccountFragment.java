@@ -204,7 +204,7 @@ public class AccountFragment extends Fragment {
                     }else {
                         tvAddress.setText(user.getAddress());
                     }
-                    if(user.getAvatar()!=null||!user.getAvatar().isEmpty()){
+                    if(user.getAvatar()!=null){
                         //Lấy ảnh từ firebase xuống
                         getAvatar(user.getAvatar());
                     }
