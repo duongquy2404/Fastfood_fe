@@ -18,6 +18,7 @@ import com.example.fastfood.data.controller.UserController;
 import com.example.fastfood.data.model.Cart;
 import com.example.fastfood.data.model.CartItem;
 import com.example.fastfood.data.model.Food;
+import com.example.fastfood.utils.ConvertMoney;
 import com.example.fastfood.utils.SessionManager;
 
 import retrofit2.Call;
@@ -68,7 +69,7 @@ public class FoodInfoActivity extends AppCompatActivity {
                 .load(food.getImageUrl())
                 .into(ivImageFoodInfo);
         tvNameFoodInfo.setText(food.getName());
-        tvPriceFoodInfo.setText(food.getPrice().toString());
+        tvPriceFoodInfo.setText(ConvertMoney.formatCurrency(food.getPrice()));
         tvDescriptionFood.setText(food.getDescription());
     }
 

@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.fastfood.R;
 import com.example.fastfood.data.model.Food;
 import com.example.fastfood.ui.admin.activites.AdminFoodUpdateActivity;
+import com.example.fastfood.utils.ConvertMoney;
 
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class FoodManagerAdapter extends RecyclerView.Adapter<FoodManagerAdapter.
         Food food=foodList.get(position);
         Glide.with(context).load(food.getImageUrl()).into(holder.ivImageFood);
         holder.tvNameFood.setText(food.getName());
-        holder.tvPriceFood.setText(food.getPrice().toString());
+        holder.tvPriceFood.setText(ConvertMoney.formatCurrency(food.getPrice()));
         holder.llItemFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

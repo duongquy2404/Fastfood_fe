@@ -18,6 +18,7 @@ import com.example.fastfood.R;
 import com.example.fastfood.data.model.Food;
 import com.example.fastfood.ui.admin.activites.AdminFoodUpdateActivity;
 import com.example.fastfood.ui.client.activities.FoodInfoActivity;
+import com.example.fastfood.utils.ConvertMoney;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         Food food=foodList.get(position);
         Glide.with(inflater.getContext()).load(food.getImageUrl()).into(holder.ivImageFood);
         holder.tvNameFood.setText(food.getName());
-        holder.tvPriceFood.setText(food.getPrice().toString());
+        holder.tvPriceFood.setText(ConvertMoney.formatCurrency(food.getPrice()));
         holder.llItemFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
