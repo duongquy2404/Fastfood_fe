@@ -73,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
+                        Toast.makeText(RegisterActivity.this, "Đăng kí thành công!!!", Toast.LENGTH_LONG).show();
                     } else {
                         // Đăng kí thất bại, xử lý lỗi
                     }

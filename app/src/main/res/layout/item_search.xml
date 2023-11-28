@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llItemFood"
+    android:id="@+id/llItemSearch"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="70dp"
     android:background="@drawable/custom_item"
     android:orientation="horizontal">
     <ImageView
-        android:id="@+id/ivImageFood"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/ivImageSearch"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginStart="20dp"
         android:src="@drawable/itemfood"/>
@@ -20,18 +20,11 @@
         android:layout_gravity="center"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/tvNameFood"
+            android:id="@+id/tvNameSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hamburger bò"
-            android:textSize="23dp"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/tvPriceFood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="70.000đ"
             android:textSize="20dp"
-            android:textColor="#F44336"/>
+            android:textColor="@color/black"/>
     </LinearLayout>
 </LinearLayout>

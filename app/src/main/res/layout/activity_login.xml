@@ -77,7 +77,7 @@
             android:id="@+id/tvRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Đằng kí"
+            android:text="Đăng kí"
             android:textSize="15dp"
             android:textColor="#088DF6"/>
     </LinearLayout>

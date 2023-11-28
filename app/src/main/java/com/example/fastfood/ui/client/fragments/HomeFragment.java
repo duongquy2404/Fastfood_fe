@@ -1,5 +1,6 @@
 package com.example.fastfood.ui.client.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,13 +14,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fastfood.R;
+import com.example.fastfood.data.controller.FoodController;
+import com.example.fastfood.data.model.Food;
+import com.example.fastfood.ui.client.activities.SearchActivity;
+import com.example.fastfood.ui.client.adapters.FoodAdapter;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     private SearchView searchView;
     private ChipGroup chipGroup;
-    private RecyclerView rvlistproduct;
+    private RecyclerView rvlisthome;
+    private FoodAdapter foodAdapter;
+    private FoodController foodController;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -34,31 +49,32 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        foodController=new FoodController();
         searchView = view.findViewById(R.id.searchView);
         chipGroup = view.findViewById(R.id.chipGroup);
-        rvlistproduct = view.findViewById(R.id.rvlistproduct);
+        rvlisthome = view.findViewById(R.id.rvlisthome);
+        rvlisthome.setLayoutManager(new LinearLayoutManager(getActivity()));
+        foodAdapter = new FoodAdapter(getActivity(), getFoodList());
+        rvlisthome.setAdapter(foodAdapter);
+        setChipGroup();
+        return view;
+    }
 
-        rvlistproduct.setLayoutManager(new LinearLayoutManager(getActivity()));
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+    public void setChipGroup(){
+        searchView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Handle search query submitted
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Handle search query text change
-                return false;
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
             }
         });
 
         // Add Chips to ChipGroup
-        for (String category : getCategories()) {
-            Chip chip = new Chip(getContext());
-            chip.setText(category);
-            chipGroup.addView(chip);
-        }
+//        for (String category : getCategories()) {
+//            Chip chip = new Chip(getContext());
+//            chip.setText(category);
+//            chipGroup.addView(chip);
+//        }
 
         // Set up ChipGroup listener
         chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
@@ -67,10 +83,30 @@ public class HomeFragment extends Fragment {
                 // Handle chip checked change
             }
         });
-        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     private String[] getCategories() {
         return new String[]{"Category 1", "Category 2", "Category 3"};
+    }
+
+    public List<Food> getFoodList(){
+        List<Food> foodList=new ArrayList<>();
+        foodController.getAllFood(new Callback<List<Food>>() {
+            @Override
+            public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
+                if(response.isSuccessful()){
+                    List<Food> foods=new ArrayList<>();
+                    foods.addAll(response.body());
+                    foodList.addAll(foods);
+                    foodAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Food>> call, Throwable t) {
+
+            }
+        });
+        return foodList;
     }
 }

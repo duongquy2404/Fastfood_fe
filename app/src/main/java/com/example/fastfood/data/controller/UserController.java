@@ -33,4 +33,20 @@ public class UserController {
         Call<User> call = userService.getUserById(id);
         call.enqueue(callback);
     }
+
+    public void updateUser(Long id, String name, String phone, String address, Callback<User> callback){
+        User user=new User();
+        user.setName(name);
+        user.setPhone(phone);
+        user.setAddress(address);
+        Call<User> call = userService.updateUser(id,user);
+        call.enqueue(callback);
+    }
+
+    public void updateAvatar(Long id, String avatar, Callback<User> callback){
+        User user=new User();
+        user.setAvatar(avatar);
+        Call<User> call = userService.updateAvatar(id, user);
+        call.enqueue(callback);
+    }
 }
