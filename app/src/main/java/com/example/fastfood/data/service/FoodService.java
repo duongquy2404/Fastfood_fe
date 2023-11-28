@@ -12,10 +12,15 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.QueryName;
 
 public interface FoodService {
     @GET("food/all")
     Call<List<Food>> getAllFood();
+
+    @GET("food/search")
+    Call<List<Food>> searchFoodsByName(@Query("name") String name);
 
     @POST("food/add")
     Call<Food> addFood(@Body Food food);

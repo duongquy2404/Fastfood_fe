@@ -21,6 +21,11 @@ public class FoodController {
         call.enqueue(callback);
     }
 
+    public void searchFoodsByName(String name, Callback<List<Food>> callback){
+        Call<List<Food>> call= foodService.searchFoodsByName(name);
+        call.enqueue(callback);
+    }
+
     public void addFood(Food food, Callback<Food> callback){
         Food aFood=new Food();
         aFood.setName(food.getName());

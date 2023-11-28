@@ -1,5 +1,6 @@
 package com.example.fastfood.ui.client.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.fastfood.R;
 import com.example.fastfood.data.controller.FoodController;
 import com.example.fastfood.data.model.Food;
+import com.example.fastfood.ui.client.activities.SearchActivity;
 import com.example.fastfood.ui.client.adapters.FoodAdapter;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -59,17 +61,11 @@ public class HomeFragment extends Fragment {
     }
 
     public void setChipGroup(){
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Handle search query submitted
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Handle search query text change
-                return false;
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
             }
         });
 
